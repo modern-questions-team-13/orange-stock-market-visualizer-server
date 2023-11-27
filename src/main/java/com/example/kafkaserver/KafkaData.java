@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Service
 public class KafkaData {
-    public record KafkaEntry (Integer type, Integer companyId, Float price,  LocalDateTime datetime) {}
+    public record KafkaEntry (Integer type, Integer companyId, Float price, String datetime) {}
 
     public static volatile Map<Integer, List<KafkaEntry>> data = new HashMap<>();
 
@@ -22,10 +22,9 @@ public class KafkaData {
         }
 
         System.out.println(entry);
-        if (data.get(entry.companyId).size() > 50) {
+        if (data.get(entry.companyId).size() > 1000) {
             data.get(entry.companyId).remove(0);
         }
         data.get(entry.companyId).add(entry);
     }
-
 }

@@ -12,7 +12,7 @@ public class KafkaServerApplication {
 
     public static void main(String[] args) throws UnknownHostException {
         List<String> topics = new ArrayList<>();
-        topics.add("TestTopic");
+        topics.add("stocks");
 
         KafkaData kafkaData = new KafkaData();
         Thread t = new Thread(new KafkaConsumerLoop(topics, kafkaData));
